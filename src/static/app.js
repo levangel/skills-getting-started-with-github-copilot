@@ -4,12 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
-  // Ensure required elements exist before proceeding
-  if (!activitiesList || !activitySelect || !signupForm || !messageDiv) {
-    console.error("One or more required DOM elements are missing.");
-    return;
-  }
-
   // Function to fetch activities from API
   async function fetchActivities() {
     try {
@@ -18,9 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Clear loading message
       activitiesList.innerHTML = "";
-
-      // Clear previous options in the select dropdown
-      activitySelect.innerHTML = "";
 
       // Populate activities list
       Object.entries(activities).forEach(([name, details]) => {
@@ -33,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
-          <p><strong>Availability:</strong> ${Math.max(spotsLeft, 0)} spots left</p>
+          <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
         `;
 
         activitiesList.appendChild(activityCard);
