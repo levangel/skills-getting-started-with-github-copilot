@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
+  // Ensure required elements exist before proceeding
+  if (!activitiesList || !activitySelect || !signupForm || !messageDiv) {
+    console.error("One or more required DOM elements are missing.");
+    return;
+  }
+
   // Function to fetch activities from API
   async function fetchActivities() {
     try {
